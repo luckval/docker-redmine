@@ -10,7 +10,10 @@ fi
 cd /redmine
 mv /assets/database.yml config/
 mv /assets/configuration.yml config/
-#mv /assets/additional_environments.rb config/
+
+# for Memcached
+mv /assets/additional_environment.rb config/
+echo "gem 'dalli'" > Gemfile.local
 
 bundle install --without development tests --path vendor/bundle
 
@@ -27,7 +30,8 @@ if [ ! -d /redmine/plugins/redmine_local_avatars ] ; then
   git clone https://github.com/luckval/redmine_local_avatars.git
   git clone https://github.com/luckval/redmine_niko_cale.git
   git clone https://github.com/luckval/redmine_scmacros.git
-#  git clone https://github.com/luckval/wiki_external_filter.git
+  git clone https://github.com/luckval/wiki_external_filter.git
+  ln -sf /redmine/plugins/wiki_external_filter/config/wiki_external_filter.yml /redmine/config/wiki_external_filter.yml
 fi
 
 bundle install

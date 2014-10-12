@@ -19,19 +19,19 @@ RUN apt-get clean
 
 ENV HOME /root
 
-RUN mkdir assets/
-ADD assets/setup.sh assets/setup.sh
-ADD assets/database.yml assets/database.yml
-ADD assets/configuration.yml assets/configuration.yml
-#ADD assets/additional_environment.rb assets/additional_environment.rb
-RUN chmod 755 assets/setup.sh
-
 RUN echo 'gem: --no-rdoc --no-ri' >> /etc/gemrc && \
     gem install bundler
 
 # Timezone
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN mkdir assets/
+ADD assets/setup.sh assets/setup.sh
+ADD assets/database.yml assets/database.yml
+ADD assets/configuration.yml assets/configuration.yml
+ADD assets/additional_environment.rb assets/additional_environment.rb
+RUN chmod 755 assets/setup.sh
 
 VOLUME ["/redmine"]
 EXPOSE 80
