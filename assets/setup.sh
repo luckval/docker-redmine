@@ -12,11 +12,11 @@ mv /assets/database.yml config/
 mv /assets/configuration.yml config/
 
 # for Memcached
-mv /assets/additional_environment.rb config/
-echo "gem 'dalli'" > Gemfile.local
+#mv /assets/additional_environment.rb config/
+#echo "gem 'dalli'" > Gemfile.local
 
 # for yaml_db
-echo "gem 'yaml_db', github: 'jetthoughts/yaml_db'" >> Gemfile.local
+#echo "gem 'yaml_db', github: 'jetthoughts/yaml_db'" >> Gemfile.local
  
 bundle install --without development tests --path vendor/bundle
 
