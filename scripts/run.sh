@@ -17,3 +17,6 @@ if [ "$1" != "" ]; then
 else
     docker run -it --name redmine --rm -v `pwd`/data/redmine:/redmine --volumes-from mysql $USER/redmine /assets/setup.sh
 fi
+
+docker run -it --name redmine --rm -v `pwd`/data/redmine:/redmine -p 3000:3000 \
+	--volumes-from mysql $USER/redmine bundle exec rails s -e production

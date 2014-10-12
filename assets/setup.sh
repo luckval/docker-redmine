@@ -15,6 +15,9 @@ mv /assets/configuration.yml config/
 mv /assets/additional_environment.rb config/
 echo "gem 'dalli'" > Gemfile.local
 
+# for yaml_db
+echo "gem 'yaml_db', github: 'jetthoughts/yaml_db'" >> Gemfile.local
+ 
 bundle install --without development tests --path vendor/bundle
 
 mkdir -p tmp tmp/pdf public/plugin_assets
