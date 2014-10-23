@@ -30,7 +30,6 @@ RUN mkdir assets/
 ADD assets/setup.sh assets/setup.sh
 ADD assets/database.yml assets/database.yml
 ADD assets/configuration.yml assets/configuration.yml
-ADD assets/additional_environment.rb assets/additional_environment.rb
 RUN chmod 755 assets/setup.sh
 
 WORKDIR /redmine
