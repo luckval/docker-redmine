@@ -10,7 +10,7 @@ if [ "$MYSQL_CONTAINER" = "" ]; then
     sleep 5
 fi
 
-REDMINE_CONTAINER=`docker ps -a | awk '/redmine\s+$ {print $1;}'`
+REDMINE_CONTAINER=`docker ps -a | awk '/redmine\s+$/ {print $1;}'`
 if [ "$REDMINE_CONTAINER" != "" ]; then
     docker rm redmine
 fi
