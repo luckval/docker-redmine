@@ -10,10 +10,14 @@ if [ "$MYSQL_CONTAINER" = "" ]; then
     sleep 5
 fi
 
-REDMINE_CONTAINER=`docker ps -a | awk '/redmine\s+$/ {print $1;}'`
+REDMINE_CONTAINER=`docker ps -a | awk '/redmine\s+$ {print $1;}'`
 if [ "$REDMINE_CONTAINER" != "" ]; then
     docker rm redmine
 fi
-docker run --name redmine -d -v ${TOPDIR}/data/redmine:/redmine --volumes-from mysql \
-	-p 80:80 ${USER}/redmine bundle exec rails s -p 80 -e production 
+
+if [ "$1" = "" ]; then
+    docker run --name redmine -it --rm -v ${TOPDIR}/data/redmine:/redmine --volumes-from mysql ${USER}/redmine /assets/setup.sh
+else
+    docker run --name redmine -it --rm -v ${TOPDIR}/data/redmine:/redmine --volumes-from mysql ${USER}/redmine $*
+fi
 

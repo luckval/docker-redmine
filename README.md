@@ -24,6 +24,7 @@ Dockerfile for [redmine](http://www.redmine.org/)
 $ git clone https://github.com/luckval/docker-redmine.git
 $ cd docker-redmine
 $ ./scripts/build.sh
+$ ./scripts/setup.sh
 $ ./scripts/run.sh
 ```
 
