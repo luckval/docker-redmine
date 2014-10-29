@@ -26,10 +26,7 @@ RUN echo 'gem: --no-rdoc --no-ri' >> /etc/gemrc && \
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN mkdir assets/
-ADD assets/setup.sh assets/setup.sh
-ADD assets/database.yml assets/database.yml
-ADD assets/configuration.yml assets/configuration.yml
+COPY assets/ /assets
 RUN chmod 755 assets/setup.sh
 
 WORKDIR /redmine
